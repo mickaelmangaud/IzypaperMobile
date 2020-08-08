@@ -1,38 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { AuthStackNavigator, AppStackNavigator } from './src/navigators';
+import { AuthContext } from './src/context/AuthContext';
 
-export default function App() {
-  return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <StatusBar style="auto" />
-
-      <View style={styles.view1}>
-        <Text>My View1</Text>
-      </View>
-
-      <View style={styles.view2}>
-        <Text>My View1</Text>
-      </View>
-
-    </SafeAreaView>
-  );
+const defaultValue = {
+  isAuthenticated: false,
 }
 
-const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1
-  },
-  view1: {
-    flex: 1,
-    backgroundColor: 'papayawhip',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  view2: {
-    flex: 1,
-    backgroundColor: 'papayawhip',
-    justifyContent: 'center',
-    alignItems: 'center',
+const reducer = (state, action) => {
+  switch (action.type) {
+      case 'TOGGLE_IS_AUTHENTICATED':
+          return {
+              ...state,
+              isAuthenticated: !state.isAuthenticated
+          }
+      default:
+        return state;
   }
-})
+}
+
+export default App = () => {
+  const [authState, dispatch] = React.useReducer(reducer, defaultValue);
+
+  const authContext = React.useMemo(() => ({
+    toggleisAuthenticated: () => dispatch({ type: 'TOGGLE_IS_AUTHENTICATED'}),
+  }), []);
+
+
+  return (
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer>
+        {authState.isAuthenticated 
+          ? <AppStackNavigator />
+          : <AuthStackNavigator />
+        }
+      </NavigationContainer>
+    </AuthContext.Provider>
+  )
+}
