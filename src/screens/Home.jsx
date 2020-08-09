@@ -4,12 +4,18 @@ import { AuthContext } from '../context/AuthContext';
 
 export const Home = ({ navigation }) => {
     const { logout } = React.useContext(AuthContext);
+
+    const logoutFn = () => {
+        console.log('logout')
+        logout()
+    }
+
     return (
         <View style={styles.container}>
             <Text>Home</Text>
             <Button 
                 title="Disconnect"
-                onPress={logout}
+                onPress={logoutFn}
             />
         </View>
     )
