@@ -14,12 +14,10 @@ export default App = () => {
     login: (username, password) => {
 		dispatch({ type: 'LOADING'});
 		if (username === 'mickael' && password === 'okcomputer') {
-			console.log('match')
 			const user = { username: 'Mickael' }
 			dispatch({ type: 'LOGIN_SUCCESS', payload: user });
 			setTimeout(() => dispatch({ type: 'LOADED'}), 800);
 		} else {
-			console.log('match pas')
 			dispatch({ type: 'LOGIN_FAILED' });
 			setTimeout(() => dispatch({ type: 'LOADED'}), 800);
 		}
@@ -38,7 +36,7 @@ export default App = () => {
 						options={{ headerShown: false }}
 					/>
 					: authState.isAuthenticated 
-						? <RootStack.Screen name="App" component={AppStackNavigator} />
+						? <RootStack.Screen name="App" component={AppStackNavigator} options={{ headerTitle: "IzyPaper" }}/>
 						: <RootStack.Screen 
 							name="Auth"
 							component={AuthStackNavigator}

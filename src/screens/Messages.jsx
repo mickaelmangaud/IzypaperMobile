@@ -2,17 +2,15 @@ import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
-export const SignIn = ({ navigation }) => {
-    const goToSignUp = () => navigation.navigate('SignUp');
-    const { login } = React.useContext(AuthContext);
-
+export const Messages = ({ navigation }) => {
+    const { logout } = React.useContext(AuthContext);
     return (
         <View style={styles.container}>
-            <Text>SignIn</Text>
-            <Button
-                title="Go To SignUp"
-                onPress={() => login('mickael', 'okcomputer')}
-            />  
+            <Text>Messages</Text>
+            <Button 
+                title="Disconnect"
+                onPress={logout}
+            />
         </View>
     )
 }
