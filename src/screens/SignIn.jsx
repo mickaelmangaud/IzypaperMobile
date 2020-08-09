@@ -4,14 +4,14 @@ import { AuthContext } from '../context/AuthContext';
 
 export const SignIn = ({ navigation }) => {
     const goToSignUp = () => navigation.navigate('SignUp');
-    const { toggleisAuthenticated } = React.useContext(AuthContext);
+    const { login } = React.useContext(AuthContext);
 
     return (
         <View style={styles.container}>
             <Text>SignIn</Text>
             <Button
                 title="Go To SignUp"
-                onPress={toggleisAuthenticated}
+                onPress={() => login('mickael', 'okcompute')}
             />  
         </View>
     )

@@ -1,40 +1,52 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthStackNavigator, AppStackNavigator } from './src/navigators';
-import { AuthContext } from './src/context/AuthContext';
+import { SplashScreen } from './src/screens';
+import { createStackNavigator } from '@react-navigation/stack';
+import { AuthContext, defaultValue, reducer } from './src/context';
 
-const defaultValue = {
-  isAuthenticated: false,
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-      case 'TOGGLE_IS_AUTHENTICATED':
-          return {
-              ...state,
-              isAuthenticated: !state.isAuthenticated
-          }
-      default:
-        return state;
-  }
-}
+const RootStack = createStackNavigator();
 
 export default App = () => {
   const [authState, dispatch] = React.useReducer(reducer, defaultValue);
 
   const authContext = React.useMemo(() => ({
-    toggleisAuthenticated: () => dispatch({ type: 'TOGGLE_IS_AUTHENTICATED'}),
+    login: (username, password) => {
+		dispatch({ type: 'LOADING'});
+		if (username === 'mickael' && password === 'okcomputer') {
+			console.log('match')
+			const user = { username: 'Mickael' }
+			dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+			setTimeout(() => dispatch({ type: 'LOADED'}), 800);
+		} else {
+			console.log('match pas')
+			dispatch({ type: 'LOGIN_FAILED' });
+			setTimeout(() => dispatch({ type: 'LOADED'}), 800);
+		}
+	},
+	logout: () => dispatch({ type: 'LOGOUT' })
   }), []);
-
 
   return (
     <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        {authState.isAuthenticated 
-          ? <AppStackNavigator />
-          : <AuthStackNavigator />
-        }
-      </NavigationContainer>
+    	<NavigationContainer>
+			<RootStack.Navigator>
+				{authState.isLoading
+					? <RootStack.Screen
+						name="Splash"
+						component={SplashScreen}
+						options={{ headerShown: false }}
+					/>
+					: authState.isAuthenticated 
+						? <RootStack.Screen name="App" component={AppStackNavigator} />
+						: <RootStack.Screen 
+							name="Auth"
+							component={AuthStackNavigator}
+							options={{ headerShown: false }}
+						/>
+				}
+			</RootStack.Navigator>
+      	</NavigationContainer>
     </AuthContext.Provider>
   )
 }

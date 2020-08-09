@@ -1,16 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { AuthContext } from '../context/AuthContext';
 
-export const Home = ({ navigation }) => {
-    const { logout } = React.useContext(AuthContext);
+export const SplashScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <Text>Home</Text>
-            <Button 
-                title="Disconnect"
-                onPress={logout}
-            />
+            <Text>SplashScreen</Text>
         </View>
     )
 }
