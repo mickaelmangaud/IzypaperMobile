@@ -1,30 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { Text, Button } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
+import { Container } from '../components/Container';
 
 export const Home = ({ navigation }) => {
     const { logout } = React.useContext(AuthContext);
 
-    const logoutFn = () => {
-        console.log('logout')
-        logout()
-    }
-
     return (
-        <View style={styles.container}>
+        <Container>
             <Text>Home</Text>
             <Button 
                 title="Disconnect"
-                onPress={logoutFn}
+                onPress={logout}
             />
-        </View>
+        </Container>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-});

@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 import { Home, Feed, Messages, Settings } from '../screens';
@@ -7,20 +6,15 @@ import { Home, Feed, Messages, Settings } from '../screens';
 const AppTabs = createMaterialTopTabNavigator();
 const AppTabsWrapper = createStackNavigator();
 
-const Header = () => {
-    return (
-        <SafeAreaView>
-            <Text>Ahahaha</Text>
-        </SafeAreaView>
-    )
-}
-
 const AppTabsNavigator = () => {
     return (
         <AppTabs.Navigator 
             tabBarPosition="bottom"
             tabBarOptions={{
                 showIcon: true,
+                labelStyle: {
+                    textTransform: 'capitalize'
+                }
             }}
         >
             <AppTabs.Screen name="Home" component={Home}/>
