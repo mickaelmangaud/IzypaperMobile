@@ -13,6 +13,10 @@ export const SignIn = ({ navigation }) => {
                 title="login"
                 onPress={() => login('mickael', 'okcomputer')}
             />
+            <Button 
+                title="Go to SignUp"
+                onPress={goToSignUp}
+            />
         </View>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AuthContext, defaultValue, reducer } from './src/context';
@@ -29,11 +30,12 @@ export default App = () => {
 
   return (
     <AuthContext.Provider value={authContext}>
+		<StatusBar
+			barStyle='light-content'
+			backgroundColor='#048b9a'
+		/>
     	<NavigationContainer>
-			<RootStack.Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
-				{/* <RootStack.Screen name="SignIn" component={SignIn} />
-				<RootStack.Screen name="SignUp" component={SignUp} />
-				<RootStack.Screen name="Drawer" component={AppDrawerNavigator} /> */}
+			<RootStack.Navigator initialRouteName="Drawer" screenOptions={{ headerShown: false }}>
 				{
 					authState.isLoading 
 					? <RootStack.Screen name="Splash" component={SplashScreen} />
