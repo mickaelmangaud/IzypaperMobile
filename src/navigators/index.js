@@ -1,2 +1,2 @@
-export { AuthStackNavigator } from './AuthStack';
-export { AppStackNavigator } from './AppStack';
+export { RootStackNavigator } from './RootStack';
+export { AppDrawerNavigator } from './AppDrawer';

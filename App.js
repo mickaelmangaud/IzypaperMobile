@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { AuthStackNavigator, AppStackNavigator } from './src/navigators';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SplashScreen } from './src/screens';
+import { createStackNavigator } from '@react-navigation/stack';
 import { AuthContext, defaultValue, reducer } from './src/context';
+import { SignIn, SignUp, SplashScreen } from './src/screens';
+import { AppDrawerNavigator } from './src/navigators';
 
-const MyDrawerNavigation = createDrawerNavigator();
+const RootStack = createStackNavigator();
 
 export default App = () => {
   const [authState, dispatch] = React.useReducer(reducer, defaultValue);
@@ -30,14 +30,21 @@ export default App = () => {
   return (
     <AuthContext.Provider value={authContext}>
     	<NavigationContainer>
-			{authState.isLoading
-				? <SplashScreen />
-				: !authState.isAuthenticated 
-					? <AuthStackNavigator />
-					: <MyDrawerNavigation.Navigator>
-						<MyDrawerNavigation.Screen name="App" component={AppStackNavigator} />
-					  </MyDrawerNavigation.Navigator>
-			}
+			<RootStack.Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
+				{/* <RootStack.Screen name="SignIn" component={SignIn} />
+				<RootStack.Screen name="SignUp" component={SignUp} />
+				<RootStack.Screen name="Drawer" component={AppDrawerNavigator} /> */}
+				{
+					authState.isLoading 
+					? <RootStack.Screen name="Splash" component={SplashScreen} />
+					: authState.isAuthenticated
+						? <RootStack.Screen name="Drawer" component={AppDrawerNavigator} />
+						: <>
+							<RootStack.Screen name="SignIn" component={SignIn} />
+							<RootStack.Screen name="SignUp" component={SignUp} />
+						  </>
+				}
+			</RootStack.Navigator>
       	</NavigationContainer>
     </AuthContext.Provider>
   )

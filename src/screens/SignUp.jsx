@@ -6,11 +6,7 @@ export const SignUp = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text>SignUp</Text>
-            <Button 
-                title="Go To Signin"
-                onPress={goToSignIn}
-            />        
+            <Text>SignUp</Text>      
         </View>
     )
 }

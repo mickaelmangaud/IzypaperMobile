@@ -12,7 +12,7 @@ export const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text>Home</Text>
+            <Text>Prisca coulis kabeya</Text>
             <Button 
                 title="Disconnect"
                 onPress={logoutFn}
