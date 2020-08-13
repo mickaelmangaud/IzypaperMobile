@@ -4,8 +4,11 @@ import { Container } from '../components';
 
 export const SplashScreen = ({ navigation }) => {
     return (
-        <Container>
+        <View style={{
+            backgroundColor: '#048b9a',
+            flex: 1,
+        }}>
             <Text>SplashScreen</Text>
-        </Container>
+        </View>
     )
 }

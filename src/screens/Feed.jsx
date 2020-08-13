@@ -1,18 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { Text } from 'react-native';
+import  { Container } from '../components';
 
 export const Feed = () => {
     return (
-        <View style={styles.container}>
+        <Container>
             <Text>Feed</Text>            
-        </View>
+        </Container>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-});

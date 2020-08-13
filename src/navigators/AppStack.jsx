@@ -1,6 +1,7 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { DrawerActions } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons/';
 import { Home, Feed, Messages, Settings } from '../screens';
 
@@ -58,21 +59,29 @@ const AppTabsNavigator = () => {
     )
 }
 
-export const AppTabsWrapperNavigation = () => {
+export const AppTabsWrapperNavigation = ({ navigation }) => {
     return (
         <AppTabsWrapper.Navigator>
             <AppTabsWrapper.Screen 
                 name="AppWrapper"
                 component={AppTabsNavigator}
+                
                 options={{
                     headerStyle: {
                         backgroundColor: '#048b9a',
                     },
-                    headerTitleAlign: 'center',
+                    headerTitleAlign: 'left',
                     headerTitle: 'IzyPaper',
                     headerTitleStyle: {
                         color: 'white',
                     },
+                    headerRight: () => <MaterialIcons
+                                            name="menu"
+                                            size={26}
+                                            color="white"
+                                            style={{ right: 12, top: 2 }}
+                                            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                                        />
                 }}
             />
         </AppTabsWrapper.Navigator>

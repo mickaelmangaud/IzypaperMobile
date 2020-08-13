@@ -17,10 +17,10 @@ export default App = () => {
 		if (username === 'mickael' && password === 'okcomputer') {
 			const user = { username: 'Mickael' }
 			dispatch({ type: 'LOGIN_SUCCESS', payload: user });
-			setTimeout(() => dispatch({ type: 'LOADED'}), 800);
+			setTimeout(() => dispatch({ type: 'LOADED'}), 500);
 		} else {
 			dispatch({ type: 'LOGIN_FAILED' });
-			setTimeout(() => dispatch({ type: 'LOADED'}), 800);
+			setTimeout(() => dispatch({ type: 'LOADED'}), 500);
 		}
 	},
 	logout: () => dispatch({ type: 'LOGOUT' })

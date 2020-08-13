@@ -7,7 +7,15 @@ const RootStack = createStackNavigator();
 
 export function RootStackNavigator() {
   return (
-    <RootStack.Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
+    <RootStack.Navigator 
+      initialRouteName="SignIn"
+      screenOptions={{ 
+        headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal'
+      }}
+      headerMode="float"
+    >
       <RootStack.Screen name="SignIn" component={SignIn} />
       <RootStack.Screen name="SignUp" component={SignUp} />
       <RootStack.Screen name="Drawer" component={AppDrawerNavigator} />
