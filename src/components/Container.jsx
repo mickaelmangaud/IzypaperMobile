@@ -5,9 +5,9 @@ import { background } from '../../assets';
 
 export const Container = ({ children }) => (
     <ContainerView>
-        <ImageBackground source={require('../../assets/background.jpg')} style={{ width: '100%', height: '100%', flex: 1 }}>
+        {/* <ImageBackground source={require('../../assets/background.jpg')} style={{ width: '100%', height: '100%', flex: 1 }}> */}
             {children}
-        </ImageBackground>
+        {/* </ImageBackground> */}
     </ContainerView>
 )
 

@@ -3,8 +3,13 @@ import { DrawerContent, DrawerContentScrollView,  } from '@react-navigation/draw
 import { MaterialIcons } from '@expo/vector-icons/';
 import { View, Text, Image } from 'react-native';
 import styled from 'styled-components/native';
+import { AuthContext } from '../context';
+import { DrawerActions } from '@react-navigation/native';
 
-export const Drawer = () => {
+export const Drawer = ({ navigation }) => {
+    const { logout } = React.useContext(AuthContext);
+    const toggleDrawer = () => navigation.dispatch(DrawerActions.toggleDrawer());
+
     return (
         <DrawerContainer>
             <DrawerContentScrollView style={{width: '100%'}}>
@@ -18,6 +23,7 @@ export const Drawer = () => {
                             left: 10,
                             top: 10,
                         }}
+                        onPress={logout}
                     />
                     <MaterialIcons 
                         name="close"
@@ -28,6 +34,7 @@ export const Drawer = () => {
                             right: 10,
                             top: 10,
                         }}
+                        onPress={toggleDrawer}
                     />
                     <Image 
                         source={require('../../assets/avatar.png')}

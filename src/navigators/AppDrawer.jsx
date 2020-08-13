@@ -10,8 +10,8 @@ export const AppDrawerNavigator = () => {
     return (
         <AppDrawer.Navigator
             drawerPosition="left"
-            drawerContent={Drawer}
-            openByDefault={true}
+            drawerContent={props => <Drawer {...props}/>}
+            openByDefault={false}
         >
             <AppDrawer.Screen 
                 name="App"

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Text, ImageBackground } from 'react-native';
+import { Text, ImageBackground, Image } from 'react-native';
+import { Button } from '../components';
 import { AuthContext } from '../context/AuthContext';
 import styled from 'styled-components/native';
 
@@ -8,10 +9,9 @@ export const SignIn = ({ navigation }) => {
     const { login } = React.useContext(AuthContext);
     
     return (
-        <ImageBackground style={{ width: '100%', height: '100%', flex: 1}} source={require('../../assets/background.jpg')}>
+        <ImageBackground style={{ width: '100%', height: '100%', flex: 1}} resizeMode="cover" source={require('../../assets/background.jpg')}>
             <SignInContainer>
-                <LoginTitle>IzyPaper</LoginTitle>
-
+                <LoginTitle>YzyPaper</LoginTitle>
                 <SignInInput
                     placeholder="Email"
                     keyboardType="email-address"
@@ -21,7 +21,7 @@ export const SignIn = ({ navigation }) => {
                     secureTextEntry
                 />
                 <Button 
-                    title="Login"
+                    text="Login"
                     onPress={() => login('mickael', 'okcomputer')}
                 />
             </SignInContainer>
@@ -46,9 +46,9 @@ const LoginTitle = styled.Text`
 
 const SignInInput = styled.TextInput`
     background-color: white;
-    height: 48px;
+    height: 40px;
     width: 100%;
-    padding-horizontal: 12px;
+    padding: 8px 12px;
     border-radius: 5px;
     margin-bottom: 24px;
 `;
