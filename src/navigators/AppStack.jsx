@@ -74,12 +74,13 @@ export const AppTabsWrapperNavigation = ({ navigation }) => {
                     headerTitle: 'IzyPaper',
                     headerTitleStyle: {
                         color: 'white',
+                        fontFamily: 'Ubuntu_700Bold'
                     },
                     headerRight: () => <MaterialIcons
                                             name="menu"
                                             size={26}
                                             color="white"
-                                            style={{ right: 12, top: 2 }}
+                                            style={{ right: 14, top: 2 }}
                                             onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                                         />
                 }}

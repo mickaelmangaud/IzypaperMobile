@@ -1,15 +1,27 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AuthContext, defaultValue, reducer } from './src/context';
 import { SignIn, SignUp, SplashScreen } from './src/screens';
 import { AppDrawerNavigator } from './src/navigators';
+import { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
+import { Lato_400Regular } from '@expo-google-fonts/lato';
+import { Boogaloo_400Regular } from '@expo-google-fonts/boogaloo';
 
 const RootStack = createStackNavigator();
 
 export default App = () => {
   const [authState, dispatch] = React.useReducer(reducer, defaultValue);
+
+  let [fontsLoaded] = useFonts({
+	Ubuntu_400Regular,
+	Lato_400Regular,
+	Boogaloo_400Regular,
+	Ubuntu_700Bold
+  });
+
 
   const authContext = React.useMemo(() => ({
     login: (username, password) => {
@@ -26,8 +38,14 @@ export default App = () => {
 	logout: () => dispatch({ type: 'LOGOUT' })
   }), []);
 
-  console.log('AUTHCONTEXT', authState)
 
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+
+//   console.log('AUTHCONTEXT', authState)
   return (
     <AuthContext.Provider value={authContext}>
 		<StatusBar

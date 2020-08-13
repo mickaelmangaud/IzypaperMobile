@@ -9,10 +9,10 @@ export const Home = ({ navigation }) => {
     return (
         <Container>
             <Text>Home</Text>
-            <Button 
+            {/* <Button 
                 title="Disconnect"
                 onPress={logout}
-            />
+            /> */}
         </Container>
     )
 }
