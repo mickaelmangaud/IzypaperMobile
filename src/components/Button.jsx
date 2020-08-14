@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import styled from 'styled-components/native';
+import { colors } from '../utils';
 
 export const Button = ({ text, onPress }) => {
     return (
@@ -15,7 +16,7 @@ export const Button = ({ text, onPress }) => {
 }
 
 const ButtonText = styled.Text`
-    color: #048b9a;
+    color: ${colors.primary};
     text-align: center;
     padding: 8px 12px;
     text-transform: uppercase;

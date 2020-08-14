@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { DrawerActions } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons/';
 import { Home, Feed, Messages, Settings } from '../screens';
+import { colors } from '../utils'
 
 const AppTabs = createMaterialTopTabNavigator();
 const AppTabsWrapper = createStackNavigator();
@@ -20,7 +21,7 @@ const AppTabsNavigator = () => {
                     color: 'white'
                 },
                 tabStyle: {
-                    backgroundColor: '#048b9a',
+                    backgroundColor: colors.primary,
                 }
             }}
         >
@@ -68,7 +69,7 @@ export const AppTabsWrapperNavigation = ({ navigation }) => {
                 
                 options={{
                     headerStyle: {
-                        backgroundColor: '#048b9a',
+                        backgroundColor: colors.primary,
                     },
                     headerTitleAlign: 'left',
                     headerTitle: 'IzyPaper',

@@ -5,6 +5,7 @@ import { View, Text, Image } from 'react-native';
 import styled from 'styled-components/native';
 import { AuthContext } from '../context';
 import { DrawerActions } from '@react-navigation/native';
+import { colors } from '../utils';
 
 export const Drawer = ({ navigation }) => {
     const { logout } = React.useContext(AuthContext);
@@ -17,7 +18,7 @@ export const Drawer = ({ navigation }) => {
                     <MaterialIcons 
                         name="exit-to-app"
                         size={18}
-                        color="#048b9a" 
+                        color={colors.primary} 
                         style={{
                             position: 'absolute',
                             left: 10,
@@ -28,7 +29,7 @@ export const Drawer = ({ navigation }) => {
                     <MaterialIcons 
                         name="close"
                         size={18}
-                        color="#048b9a" 
+                        color={colors.primary}
                         style={{
                             position: 'absolute',
                             right: 10,
@@ -43,7 +44,7 @@ export const Drawer = ({ navigation }) => {
                             height: 200,
                             borderRadius: 200/2,
                             marginTop: 20,
-                            borderColor: '#048b9a',
+                            borderColor: colors.primary,
                             borderWidth: 1
                         }}
                     />
@@ -76,6 +77,6 @@ const UserName = styled.Text`
 const UserEmail = styled.Text`
     font-family: 'Boogaloo_400Regular';
     margin-top: 2px;
-    color: #048b9a;
+    color: ${colors.primary};
     font-size: 12px;
 `;

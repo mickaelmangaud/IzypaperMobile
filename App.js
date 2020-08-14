@@ -9,6 +9,7 @@ import { AppDrawerNavigator } from './src/navigators';
 import { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
 import { Lato_400Regular } from '@expo-google-fonts/lato';
 import { Boogaloo_400Regular } from '@expo-google-fonts/boogaloo';
+import { colors } from './src/utils';
 
 const RootStack = createStackNavigator();
 
@@ -50,7 +51,7 @@ export default App = () => {
     <AuthContext.Provider value={authContext}>
 		<StatusBar
 			barStyle='light-content'
-			backgroundColor='#048b9a'
+			backgroundColor={colors.primary}
 		/>
     	<NavigationContainer>
 			<RootStack.Navigator initialRouteName="Drawer" screenOptions={{ headerShown: false }}>

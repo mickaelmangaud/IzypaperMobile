@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, ImageBackground, Image } from 'react-native';
+import { Text, ImageBackground, Image, View } from 'react-native';
 import { Button } from '../components';
 import { AuthContext } from '../context/AuthContext';
 import styled from 'styled-components/native';
+import * as Animatable from 'react-native-animatable';
 
 export const SignIn = ({ navigation }) => {
     const goToSignUp = () => navigation.navigate('SignUp');
@@ -11,19 +12,24 @@ export const SignIn = ({ navigation }) => {
     return (
         <ImageBackground style={{ width: '100%', height: '100%', flex: 1}} resizeMode="cover" source={require('../../assets/background.jpg')}>
             <SignInContainer>
-                <LoginTitle>YzyPaper</LoginTitle>
-                <SignInInput
-                    placeholder="Email"
-                    keyboardType="email-address"
-                />
-                <SignInInput
-                    placeholder="Mot de passe"
-                    secureTextEntry
-                />
-                <Button 
-                    text="Login"
-                    onPress={() => login('mickael', 'okcomputer')}
-                />
+                <LoginWrapper 
+                    animation="slideInUp"
+                    duration={500}
+                >
+                    <LoginTitle >YzyPaper</LoginTitle>
+                    <SignInInput
+                        placeholder="Email"
+                        keyboardType="email-address"
+                    />
+                    <SignInInput
+                        placeholder="Mot de passe"
+                        secureTextEntry
+                    />
+                    <Button
+                        text="Login"
+                        onPress={() => login('mickael', 'okcomputer')}
+                    />
+                </LoginWrapper>
             </SignInContainer>
         </ImageBackground>
     )
@@ -34,6 +40,11 @@ const SignInContainer = styled.View`
     align-items: center;
     padding: 10%;
 `;
+
+const LoginWrapper = Animatable.createAnimatableComponent(styled.View`
+    width: 100%;
+    align-items: center;
+`)
 
 const LoginTitle = styled.Text`
     font-size: 38px;
