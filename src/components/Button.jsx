@@ -3,11 +3,11 @@ import { TouchableOpacity, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { colors } from '../utils';
 
-export const Button = ({ text, onPress }) => {
+export const Button = ({ text, onPress, style }) => {
     return (
         <TouchableOpacity onPress={onPress} style={{width: '100%'}}>
-            <ButtonView>
-                <ButtonText>
+            <ButtonView style={[style, { elevation: 0 }]}>
+                <ButtonText style={{color: style.color || colors.primary }}>
                     {text}
                 </ButtonText>
             </ButtonView>
@@ -20,7 +20,7 @@ const ButtonText = styled.Text`
     text-align: center;
     padding: 8px 12px;
     text-transform: uppercase;
-    font-family: 'Ubuntu_700Bold';
+    font-family: 'Ubuntu_400Regular';
 `;
 
 const ButtonView = styled.View`

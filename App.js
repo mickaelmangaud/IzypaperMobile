@@ -9,6 +9,7 @@ import { AppDrawerNavigator } from './src/navigators';
 import { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
 import { Lato_400Regular } from '@expo-google-fonts/lato';
 import { Boogaloo_400Regular } from '@expo-google-fonts/boogaloo';
+import { Comfortaa_400Regular } from '@expo-google-fonts/comfortaa';
 import { colors } from './src/utils';
 
 const RootStack = createStackNavigator();
@@ -20,7 +21,8 @@ export default App = () => {
 	Ubuntu_400Regular,
 	Lato_400Regular,
 	Boogaloo_400Regular,
-	Ubuntu_700Bold
+	Ubuntu_700Bold,
+	Comfortaa_400Regular // test
   });
 
 

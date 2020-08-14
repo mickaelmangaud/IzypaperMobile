@@ -4,6 +4,7 @@ import { Button } from '../components';
 import { AuthContext } from '../context/AuthContext';
 import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
+import { colors } from '../utils';
 
 export const SignIn = ({ navigation }) => {
     const goToSignUp = () => navigation.navigate('SignUp');
@@ -28,6 +29,7 @@ export const SignIn = ({ navigation }) => {
                     <Button
                         text="Login"
                         onPress={() => login('mickael', 'okcomputer')}
+                        style={{color: colors.primary}}
                     />
                 </LoginWrapper>
             </SignInContainer>

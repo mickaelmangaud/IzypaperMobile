@@ -1,8 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { AppTabsWrapperNavigation } from './AppStack';
-import { Settings } from '../screens';
-import { Drawer } from '../screens/Drawer';
+import { Drawer, Account } from '../screens';
 
 const AppDrawer = createDrawerNavigator();
 
@@ -11,15 +10,16 @@ export const AppDrawerNavigator = () => {
         <AppDrawer.Navigator
             drawerPosition="left"
             drawerContent={props => <Drawer {...props}/>}
-            openByDefault={false}
+            openByDefault={true}
+            drawerType="slide"
         >
             <AppDrawer.Screen 
                 name="App"
                 component={AppTabsWrapperNavigation} 
             />
             <AppDrawer.Screen 
-                name="Settings"
-                component={Settings} 
+                name="Account"
+                component={Account} 
             />
         </AppDrawer.Navigator>
     )

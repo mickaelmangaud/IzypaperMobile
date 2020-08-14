@@ -2,7 +2,7 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { DrawerActions } from '@react-navigation/native';
-import { MaterialIcons } from '@expo/vector-icons/';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Home, Feed, Messages, Settings } from '../screens';
 import { colors } from '../utils'
 
@@ -75,7 +75,7 @@ export const AppTabsWrapperNavigation = ({ navigation }) => {
                     headerTitle: 'IzyPaper',
                     headerTitleStyle: {
                         color: 'white',
-                        fontFamily: 'Ubuntu_700Bold'
+                        fontFamily: 'Comfortaa_400Regular'
                     },
                     headerRight: () => <MaterialIcons
                                             name="menu"

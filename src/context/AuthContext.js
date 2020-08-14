@@ -3,7 +3,7 @@ import React from 'react';
 export const AuthContext = React.createContext();
 
 export const defaultValue = {
-    isAuthenticated: false,
+    isAuthenticated: true,
     isLoading: false,
     user: null,
 }

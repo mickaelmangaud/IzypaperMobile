@@ -5,3 +5,5 @@ export { Feed } from './Feed';
 export { Messages } from './Messages';
 export { Settings } from './Settings';
 export { SplashScreen } from './SpashScreen';
+export { Account } from './Account';
+export { Drawer } from './Drawer';
