@@ -11,6 +11,8 @@ import { Lato_400Regular } from '@expo-google-fonts/lato';
 import { Boogaloo_400Regular } from '@expo-google-fonts/boogaloo';
 import { Comfortaa_400Regular } from '@expo-google-fonts/comfortaa';
 import { colors } from './src/utils';
+import { ApolloProvider } from '@apollo/client';
+import { client } from './src/apollo/client';
 
 const RootStack = createStackNavigator();
 
@@ -50,25 +52,27 @@ export default App = () => {
 
 //   console.log('AUTHCONTEXT', authState)
   return (
-    <AuthContext.Provider value={authContext}>
-		<StatusBar
-			barStyle='light-content'
-			backgroundColor={colors.primary}
-		/>
-    	<NavigationContainer>
-			<RootStack.Navigator initialRouteName="Drawer" screenOptions={{ headerShown: false }}>
-				{
-					authState.isLoading 
-					? <RootStack.Screen name="Splash" component={SplashScreen} />
-					: authState.isAuthenticated
-						? <RootStack.Screen name="Drawer" component={AppDrawerNavigator} />
-						: <>
-							<RootStack.Screen name="SignIn" component={SignIn} />
-							<RootStack.Screen name="SignUp" component={SignUp} />
-						  </>
-				}
-			</RootStack.Navigator>
-      	</NavigationContainer>
-    </AuthContext.Provider>
+	<ApolloProvider client={client} >
+		<AuthContext.Provider value={authContext}>
+			<StatusBar
+				barStyle='light-content'
+				backgroundColor={colors.primary}
+			/>
+			<NavigationContainer>
+				<RootStack.Navigator initialRouteName="Drawer" screenOptions={{ headerShown: false }}>
+					{
+						authState.isLoading 
+						? <RootStack.Screen name="Splash" component={SplashScreen} />
+						: authState.isAuthenticated
+							? <RootStack.Screen name="Drawer" component={AppDrawerNavigator} />
+							: <>
+								<RootStack.Screen name="SignIn" component={SignIn} />
+								<RootStack.Screen name="SignUp" component={SignUp} />
+							</>
+					}
+				</RootStack.Navigator>
+			</NavigationContainer>
+		</AuthContext.Provider>
+	</ApolloProvider>
   )
 }
