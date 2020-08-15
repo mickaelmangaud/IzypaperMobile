@@ -5,10 +5,14 @@ import { AuthContext } from '../context/AuthContext';
 import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 import { colors } from '../utils';
+import { useQuery, gql } from '@apollo/client';
 
 export const SignIn = ({ navigation }) => {
     const goToSignUp = () => navigation.navigate('SignUp');
     const { login } = React.useContext(AuthContext);
+    const { loading, error, data } = useQuery(QUERY);
+
+    console.log(data)
     
     return (
         <ImageBackground style={{ width: '100%', height: '100%', flex: 1}} resizeMode="cover" source={require('../../assets/background.jpg')}>
@@ -17,6 +21,7 @@ export const SignIn = ({ navigation }) => {
                     animation="slideInUp"
                     duration={500}
                 >
+                    <Text>{JSON.stringify(data, undefined, 2)}</Text>
                     <LoginTitle >YzyPaper</LoginTitle>
                     <SignInInput
                         placeholder="Email"
@@ -36,6 +41,12 @@ export const SignIn = ({ navigation }) => {
         </ImageBackground>
     )
 }
+
+const QUERY = gql`
+    {
+        helloWorld
+    }
+`;
 
 const SignInContainer = styled.View`
     flex: 1;
