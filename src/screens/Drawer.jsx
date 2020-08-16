@@ -1,15 +1,13 @@
 import React from 'react';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { Dimensions, Text, StyleSheet, View } from 'react-native';
+import { Dimensions, Text, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { AuthContext } from '../context';
-import { DrawerActions } from '@react-navigation/native';
 import { colors } from '../utils';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export const Drawer = ({ navigation }) => {
     const { logout } = React.useContext(AuthContext);
-    const toggleDrawer = () => navigation.dispatch(DrawerActions.toggleDrawer());
     const gotToAccountScreen = () => navigation.navigate('Account');
 
     return (
