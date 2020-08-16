@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { Container } from '../components';
+import styled from 'styled-components/native';
 
 export const Settings = () => {
     return (
@@ -9,3 +9,7 @@ export const Settings = () => {
         </Container>
     )
 }
+
+const Container = styled.View`
+    flex: 1;
+`;

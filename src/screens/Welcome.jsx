@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dimensions, TouchableOpacity, ImageBackground, View } from 'react-native';
-import { Container } from '../components';
 import styled from 'styled-components/native';
 import { colors } from '../utils';
 import * as Animatable from 'react-native-animatable';
@@ -11,7 +10,14 @@ export const Welcome = ({ navigation }) => {
 
             <ImageBackground source={require('../../assets/background.jpg')} style={{ flex: 1, height: '100%', width: '100%' }}>
                 <Banner>
-                    <Logo style={{ color: 'white'}}>Izypaper</Logo>
+                    <Logo
+                        animation="bounceIn"
+                        delay={600}
+                        duration={1800}
+                        useNativeDriver={true}
+                        >
+                            Izypaper
+                    </Logo>
                 </Banner>
             </ImageBackground>
 
@@ -44,6 +50,10 @@ export const Welcome = ({ navigation }) => {
     )
 }
 
+const Container = styled.View`
+    flex: 1;
+`;
+
 const Banner = styled.View`
     /* background-color: ${colors.primary}; */
     height: 100%;
@@ -51,13 +61,12 @@ const Banner = styled.View`
     align-items: center;
 `;
 
-const Logo = styled.Text`
+const Logo = Animatable.createAnimatableComponent(styled.Text`
     color: white;
-    transform: translateY(-150px);
+    margin-bottom: 85%;
     font-size: 48px;
     font-family: 'Ubuntu_700Bold';
-    elevation: 3;
-`;
+`);
 
 const Buttons = Animatable.createAnimatableComponent(styled.View`
     position: absolute;

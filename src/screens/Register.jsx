@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, TouchableHighlight } from 'react-native';
-import styled from 'styled-components/native';
 import { colors } from '../utils';
 import { MaterialIcons } from '@expo/vector-icons';
+import styled from 'styled-components/native';
 
 export const Register = ({ navigation }) => {
     return (

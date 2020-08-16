@@ -1,24 +1,17 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
+import styled from 'styled-components/native';
 
 export const SignUp = ({ navigation }) => {
     const goToSignIn = () => navigation.navigate('SignIn');
 
     return (
-        <View style={styles.container}>
+        <Container style={styles.container}>
             <Text>SignUp</Text>     
-            <Button 
-                title="Go to SignIn"
-                onPress={goToSignIn}
-            /> 
-        </View>
+        </Container>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-});
+const Container = styled.View`
+    flex: 1;
+`;
