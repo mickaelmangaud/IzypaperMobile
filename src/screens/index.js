@@ -7,3 +7,5 @@ export { Settings } from './Settings';
 export { SplashScreen } from './SpashScreen';
 export { Account } from './Account';
 export { Drawer } from './Drawer';
+export { Welcome } from './Welcome';
+export { Register } from './Register';

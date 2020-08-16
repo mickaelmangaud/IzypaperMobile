@@ -1,12 +1,11 @@
 import React from 'react';
-import { DrawerContentScrollView,  } from '@react-navigation/drawer';
-import { Dimensions, Text } from 'react-native';
+import { DrawerContentScrollView } from '@react-navigation/drawer';
+import { Dimensions, Text, StyleSheet, View } from 'react-native';
 import styled from 'styled-components/native';
 import { AuthContext } from '../context';
 import { DrawerActions } from '@react-navigation/native';
 import { colors } from '../utils';
-import { Button } from '../components';
-import * as Animatable from 'react-native-animatable';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const Drawer = ({ navigation }) => {
     const { logout } = React.useContext(AuthContext);
@@ -26,9 +25,11 @@ export const Drawer = ({ navigation }) => {
                 
                 {/* ShortCuts View */}
                 <ShortCuts>
-                    <Text>Messages</Text>
-                    <AccountButton text="Mon Compte" onPress={gotToAccountScreen}/>
-                    <SignOutButton text="Déconnexion" onPress={logout}/>
+                    <Divider />
+                    <DeconnectLink onPress={logout}>
+                        <MaterialIcons name="exit-to-app" size={22} color={colors.primary} />
+                        <Text style={{ color: colors.primary, marginLeft: 8 }}>Déconnexion</Text>
+                    </DeconnectLink>
                 </ShortCuts>
 
             </DrawerContentScrollView>
@@ -76,15 +77,13 @@ const ShortCuts = styled.View`
     padding: 0 5%;
 `;
 
-const AccountButton = styled(Button)`
-    background-color: rgba(0,0,0, .03);
-    height: 32px;
-    align-self: center;
-    margin-bottom: 12px;
+const Divider = styled.View`
+    border-bottom-color: ${colors.primary};
+    border-bottom-width: ${StyleSheet.hairlineWidth}px;
 `;
 
-const SignOutButton = styled(Button)`
-    background-color: rgba(0,0,0, .03);
-    height: 32px;
-    align-self: center;
+const DeconnectLink = styled.TouchableOpacity`
+    flex-direction: row;
+    align-items: center;
+    margin-top: 12px;
 `;

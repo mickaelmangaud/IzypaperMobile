@@ -17,10 +17,7 @@ export const SignIn = ({ navigation }) => {
     return (
         <ImageBackground style={{ width: '100%', height: '100%', flex: 1}} resizeMode="cover" source={require('../../assets/background.jpg')}>
             <SignInContainer>
-                <LoginWrapper 
-                    animation="slideInUp"
-                    duration={500}
-                >
+                <LoginWrapper>
                     <Text>{JSON.stringify(data, undefined, 2)}</Text>
                     <LoginTitle >YzyPaper</LoginTitle>
                     <SignInInput
@@ -54,10 +51,10 @@ const SignInContainer = styled.View`
     padding: 10%;
 `;
 
-const LoginWrapper = Animatable.createAnimatableComponent(styled.View`
+const LoginWrapper = styled.View`
     width: 100%;
     align-items: center;
-`)
+`;
 
 const LoginTitle = styled.Text`
     font-size: 38px;

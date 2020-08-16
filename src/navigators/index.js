@@ -1,2 +1,2 @@
-export { RootStackNavigator } from './RootStack';
+// export { RootStackNavigator } from './RootStack';
 export { AppDrawerNavigator } from './AppDrawer';

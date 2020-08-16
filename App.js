@@ -2,9 +2,9 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, TransitionSpecs,CardStyleInterpolators } from '@react-navigation/stack';
 import { AuthContext, defaultValue, reducer } from './src/context';
-import { SignIn, SignUp, SplashScreen } from './src/screens';
+import { SignIn, SignUp, SplashScreen, Welcome, Register } from './src/screens';
 import { AppDrawerNavigator } from './src/navigators';
 import { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
 import { Lato_400Regular } from '@expo-google-fonts/lato';
@@ -49,7 +49,6 @@ export default App = () => {
     return <AppLoading />;
   }
 
-
 //   console.log('AUTHCONTEXT', authState)
   return (
 	<ApolloProvider client={client} >
@@ -59,15 +58,39 @@ export default App = () => {
 				backgroundColor={colors.primary}
 			/>
 			<NavigationContainer>
-				<RootStack.Navigator initialRouteName="Drawer" screenOptions={{ headerShown: false }}>
+				<RootStack.Navigator 
+					initialRouteName="Drawer"
+					screenOptions={{ 
+						headerShown: false,
+						cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+						gestureEnabled: true,
+						gestureDirection: 'horizontal',
+					}}
+				>
 					{
 						authState.isLoading 
 						? <RootStack.Screen name="Splash" component={SplashScreen} />
 						: authState.isAuthenticated
-							? <RootStack.Screen name="Drawer" component={AppDrawerNavigator} />
-							: <>
-								<RootStack.Screen name="SignIn" component={SignIn} />
-								<RootStack.Screen name="SignUp" component={SignUp} />
+							?
+							<RootStack.Screen 
+								name="Drawer"
+								component={AppDrawerNavigator}
+							/>
+							: 
+							<>	
+								<RootStack.Screen name="Welcome" component={Welcome} />
+								<RootStack.Screen
+									name="Register"
+									component={Register}
+								/>
+								<RootStack.Screen 
+									name="SignIn"
+									component={SignIn}
+								/>
+								<RootStack.Screen
+									name="SignUp"
+									component={SignUp}
+								/>
 							</>
 					}
 				</RootStack.Navigator>
