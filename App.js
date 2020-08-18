@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { StatusBar } from 'react-native';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
@@ -53,10 +53,7 @@ export default App = () => {
   return (
 	<ApolloProvider client={client} >
 		<AuthContext.Provider value={authContext}>
-			<StatusBar
-				barStyle='light-content'
-				backgroundColor={colors.primary}
-			/>
+			<StatusBar barStyle='light-content' backgroundColor={colors.primary} />
 			<NavigationContainer>
 				<RootStack.Navigator 
 					initialRouteName="Drawer"
@@ -65,33 +62,28 @@ export default App = () => {
 						cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 						gestureEnabled: true,
 						gestureDirection: 'horizontal',
-					}}
-				>
+					}}>
 					{
 						authState.isLoading 
-						? <RootStack.Screen name="Splash" component={SplashScreen} />
+						? 
+						<RootStack.Screen 
+							name="Splash"
+							component={SplashScreen}
+							options={{
+								cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+								gestureEnabled: true,
+								gestureDirection: 'horizontal',
+							}}
+						/>
 						: authState.isAuthenticated
-							?
-							<RootStack.Screen 
-								name="Drawer"
-								component={AppDrawerNavigator}
-							/>
+							? <RootStack.Screen  name="Drawer" component={AppDrawerNavigator} />
 							: 
-							<>	
+							<Fragment>	
 								<RootStack.Screen name="Welcome" component={Welcome} />
-								<RootStack.Screen
-									name="Register"
-									component={Register}
-								/>
-								<RootStack.Screen 
-									name="SignIn"
-									component={SignIn}
-								/>
-								<RootStack.Screen
-									name="SignUp"
-									component={SignUp}
-								/>
-							</>
+								<RootStack.Screen name="Register" component={Register} />
+								<RootStack.Screen name="SignIn" component={SignIn} />
+								<RootStack.Screen name="SignUp" component={SignUp} />
+							</Fragment>
 					}
 				</RootStack.Navigator>
 			</NavigationContainer>
