@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { StatusBar } from 'react-native';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, TransitionSpecs,CardStyleInterpolators } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { AuthContext, defaultValue, reducer } from './src/context';
 import { SignIn, SignUp, SplashScreen, Welcome, Register } from './src/screens';
 import { AppDrawerNavigator } from './src/navigators';
@@ -26,7 +26,6 @@ export default App = () => {
 	Ubuntu_700Bold,
 	Comfortaa_400Regular // test
   });
-
 
   const authContext = React.useMemo(() => ({
     login: (username, password) => {
